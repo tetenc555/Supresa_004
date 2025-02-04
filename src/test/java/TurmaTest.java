@@ -51,6 +51,20 @@ class TurmaTest {
     }
 
     @Test
+    void naoDeveMatricularAlunoExistente(){
+        try{
+            Turma t = new Turma("DCC022",new Professor("Maycon"),new Disciplina("Estruturamento"));
+            Aluno b = new Aluno("Pedro do Marx Pao");
+            t.matricularAluno(b);
+            t.matricularAluno(b);
+            fail();
+        }
+        catch(IllegalArgumentException e){
+            assertEquals("Aluno ja esta matriculado.", e.getMessage());
+        }
+    }
+
+    @Test
     void deveRetornarNomesAlunos() {
         Turma t = new Turma("DCC022",new Professor("Maycon"),new Disciplina("Estruturamento"));
         Aluno a = new Aluno("Joao Senhor Marihuana");
@@ -78,6 +92,28 @@ class TurmaTest {
     void deveVerificarSeAlunoEstaTurmaNegativo(){
         Turma t = new Turma("DCC022",new Professor("Maycon"),new Disciplina("Estruturamento"));
         Aluno b = new Aluno("Pedro do Marx Pao");
+        assertFalse(t.alunoIsPresent(b));
+    }
+
+    @Test
+    void naoDeveDesmatricularAlunoInexistente(){
+        try{
+            Turma t = new Turma("DCC022",new Professor("Maycon"),new Disciplina("Estruturamento"));
+            Aluno b = new Aluno("Pedro do Marx Pao");
+            t.desmatricularAluno(b);
+            fail();
+        }
+        catch(IllegalArgumentException e){
+            assertEquals("Aluno nao esta matriculado!", e.getMessage());
+        }
+    }
+
+    @Test
+    void deveDesmatricularAlunoExistente(){
+        Turma t = new Turma("DCC022",new Professor("Maycon"),new Disciplina("Estruturamento"));
+        Aluno b = new Aluno("Pedro do Marx Pao");
+        t.matricularAluno(b);
+        t.desmatricularAluno(b);
         assertFalse(t.alunoIsPresent(b));
     }
 }

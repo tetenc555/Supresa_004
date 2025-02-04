@@ -66,10 +66,16 @@ public class Turma {
     }
 
     public void matricularAluno(Aluno aluno) {
+        if (this.alunoIsPresent(aluno)) {
+            throw new IllegalArgumentException("Aluno ja esta matriculado.");
+        }
         this.alunos.add(aluno);
     }
 
     public void desmatricularAluno(Aluno aluno) {
+        if (!this.alunoIsPresent(aluno)){
+            throw new IllegalArgumentException("Aluno nao esta matriculado!");
+        }
         this.alunos.remove(aluno);
     }
 
