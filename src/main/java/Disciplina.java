@@ -1,5 +1,9 @@
-public abstract class Pessoa {
+public class Disciplina {
     private String nome;
+
+    Disciplina(String nome){
+        this.setNome(nome);
+    }
 
     public String getNome() {
         return nome;
