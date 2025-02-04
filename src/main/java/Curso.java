@@ -74,7 +74,7 @@ public class Curso {
 
     public void matricularAluno(Aluno aluno) {
         if (this.alunoIsPresentOnCurso(aluno)) {
-            throw new IllegalArgumentException("Aluno ja esta matriculado no curso.")
+            throw new IllegalArgumentException("Aluno ja esta matriculado no curso.");
         }
         this.alunos.add(aluno);
     }
