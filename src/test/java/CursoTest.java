@@ -79,20 +79,23 @@ class CursoTest {
     }
 
     @Test
-    void deveRetornarTodosAlunos(){
-        fail(); //SO COPIEI E COLEI!!! AJUSTAR CODIGO!! CASO DE TEMPO!!
+    void deveRetornarTodosAlunosTurma(){
         Turma t1 = new Turma("DCC022",new Professor("Maycon"),new Disciplina("Estruturamento"));
         Turma t2 = new Turma("DCC012",new Professor("Fernando"),new Disciplina("Desestruturamento"));
-        Turma t3 = new Turma("DCC021",new Professor("Receba"),new Disciplina("Sinuca"));
         Curso c = new Curso();
+        Aluno a = new Aluno("Joao Senhor Marihuana");
+        Aluno b = new Aluno("Pedro do Marx Pao");
+        Aluno d = new Aluno("Caua Moreno");
+        t1.matricularAluno(a);
+        t2.matricularAluno(b);
+        t2.matricularAluno(d);
         c.addTurma(t1);
         c.addTurma(t2);
-        c.addTurma(t3);
         ArrayList<String> nomesVerificar = new ArrayList<>();
-        nomesVerificar.add("Estruturamento");
-        nomesVerificar.add("Desestruturamento");
-        nomesVerificar.add("Sinuca");
-        assertEquals(nomesVerificar, c.getDisciplinas());
+        nomesVerificar.add("Joao Senhor Marihuana");
+        nomesVerificar.add("Pedro do Marx Pao");
+        nomesVerificar.add("Caua Moreno");
+        assertEquals(nomesVerificar, c.getAlunosDisciplinas());
     }
 
     @Test
